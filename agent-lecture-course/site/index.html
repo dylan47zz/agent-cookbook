@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>从 ChatGPT 到 Agent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">Zone-01</span>
+          <div>
+            <p class="eyebrow">Lecture Map</p>
+            <h1>从 ChatGPT 到 Agent</h1>
+          </div>
+        </div>
+        <nav class="topnav">
+          <a href="#overview">总览</a>
+          <a href="#lecture-1">第1讲</a>
+          <a href="#lecture-2">第2讲</a>
+          <a href="#lecture-3">第3讲</a>
+          <a href="#closing">结语</a>
+        </nav>
+      </header>
+
+      <div class="progress-rail" aria-hidden="true">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <button class="notes-toggle" id="notes-toggle" type="button">讲师备注</button>
+
+      <aside class="notes-drawer" id="notes-drawer" aria-label="讲师备注">
+        <div class="notes-header">
+          <p class="eyebrow">Presenter Notes</p>
+          <button class="notes-close" id="notes-close" type="button">关闭</button>
+        </div>
+        <div class="notes-content" id="notes-content">
+          <article class="notes-panel is-active" data-notes="overview">
+            <h3>总览备注</h3>
+            <p>这一页不要讲太久，作用是把全场视线先拉到主命题上：今天我们不是在看又一个聊天框，而是在看 AI 为什么开始像“系统”而不是“答题器”。</p>
+          </article>
+          <article class="notes-panel" data-notes="lecture-1">
+            <h3>第1讲备注</h3>
+            <p>这一讲要先破除误解，再上概念。先让大家觉得“好像确实不是一个东西”，再解释为什么不是。重点句：Agent 不是更会说，而是更会沿着过程行动。</p>
+          </article>
+          <article class="notes-panel" data-notes="lecture-2">
+            <h3>第2讲备注</h3>
+            <p>避免把现场带成技术排障大会。重点不是每个人都部署到完美，而是让大家看懂配置项到底在控制什么，以及为什么权限、Skill、渠道会改变它的能力边界。</p>
+          </article>
+          <article class="notes-panel" data-notes="lecture-3">
+            <h3>第3讲备注</h3>
+            <p>这一讲核心不是列举工具，而是训练判断。反复提醒：可以把重复劳动交给 Agent，但不要把理解、判断和表达外包出去。</p>
+          </article>
+          <article class="notes-panel" data-notes="closing">
+            <h3>结语备注</h3>
+            <p>结尾不要变成“谢谢观看”。这一页更像收剑入鞘：Agent 很强，但真正决定你会不会被带偏的，是你的判断力，而不是它的参数表。</p>
+          </article>
+        </div>
+      </aside>
+
+      <main>
+        <section id="overview" class="hero-section panel reveal-section" data-section-name="overview">
+          <div class="hero-copy">
+            <p class="eyebrow">Ancient Map Activated</p>
+            <h2>Agent 不是更会聊天，<br />而是更会完成任务。</h2>
+            <p class="hero-text">
+              这是一套用于讲座演示的轻量课程站点。目标不是把工具神化，而是带大家看清楚：
+              Agent 和传统聊天 AI 到底差在哪，为什么 OpenClaw 一类工具会突然变热，如何把它们用于学习辅助，以及什么时候必须停下来自查。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#lecture-1">开始探索</a>
+              <a class="button ghost" href="#map">查看课程地图</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="map-orb">
+              <div class="orbit orbit-a"></div>
+              <div class="orbit orbit-b"></div>
+              <div class="core-glow"></div>
+            </div>
+            <div class="hero-caption">
+              <p>主命题</p>
+              <strong>从“问答工具”到“可执行系统”</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="map" class="panel reveal-section" data-section-name="overview">
+          <div class="section-heading">
+            <p class="eyebrow">Course Map</p>
+            <h2>三段旅程，一张地图</h2>
+          </div>
+          <div class="map-grid">
+            <article class="map-card">
+              <span class="map-index">01</span>
+              <p class="map-meta">约 2 小时</p>
+              <h3>认识 Agent</h3>
+              <p>看懂世界规则。先把“更强聊天框”这个误会拆掉。</p>
+              <a href="#lecture-1">进入第1讲</a>
+            </article>
+            <article class="map-card">
+              <span class="map-index">02</span>
+              <p class="map-meta">约 2 小时</p>
+              <h3>部署与配置</h3>
+              <p>唤醒机关。搞明白它为什么能跑，以及哪里最容易翻车。</p>
+              <a href="#lecture-2">进入第2讲</a>
+            </article>
+            <article class="map-card">
+              <span class="map-index">03</span>
+              <p class="map-meta">约 2 小时</p>
+              <h3>学习应用与工具比较</h3>
+              <p>带着判断力上路。知道怎么用、怎么选、哪里该刹车。</p>
+              <a href="#lecture-3">进入第3讲</a>
+            </article>
+          </div>
+          <div class="takeaways">
+            <article>
+              <h3>判断力</h3>
+              <p>分清什么是 Agent，什么只是聊天 AI 的延伸。</p>
+            </article>
+            <article>
+              <h3>上手感</h3>
+              <p>理解部署、配置、Skill、权限这些词到底意味着什么。</p>
+            </article>
+            <article>
+              <h3>边界感</h3>
+              <p>知道 AI 可以帮忙，但不能替你成长，更不能替你背锅。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="lecture-1" class="panel lecture-panel reveal-section" data-section-name="lecture-1">
+          <div class="section-heading">
+            <p class="eyebrow">Lecture 01</p>
+            <h2>Agent 是什么，为什么它不只是 ChatGPT</h2>
+          </div>
+          <div class="lecture-meta">
+            <span>建议时长：120 分钟</span>
+            <span>目标：打破“更强聊天框”误解</span>
+          </div>
+
+          <div class="prompt-panel">
+            <div>
+              <p class="eyebrow">Opening Prompt</p>
+              <h3>如果你说：“帮我整理一篇英语文章，再生成复习提纲。”</h3>
+            </div>
+            <div class="toggle-group" data-toggle-group="intro">
+              <button class="toggle-button is-active" data-target="chat">聊天 AI 会怎么做</button>
+              <button class="toggle-button" data-target="agent">Agent 会怎么做</button>
+            </div>
+          </div>
+
+          <div class="compare-stage">
+            <article class="compare-card is-active" data-panel="chat">
+              <span class="compare-tag">Chat AI</span>
+              <h3>像嘴很快的顾问</h3>
+              <p>擅长解释、总结、回答问题，但通常停留在“说”的层面。你问一步，它答一步，更多是给建议，不一定真的去动手。</p>
+              <ul>
+                <li>一问一答</li>
+                <li>偏回答，不偏执行</li>
+                <li>通常不接管完整流程</li>
+              </ul>
+            </article>
+            <article class="compare-card" data-panel="agent">
+              <span class="compare-tag">Agent</span>
+              <h3>像能动手的助理</h3>
+              <p>擅长围绕目标拆步骤、调工具、跑流程、回报结果。它不只是“会说得更长”，而是“会沿着过程行动”。</p>
+              <ul>
+                <li>目标驱动</li>
+                <li>会规划、会调工具</li>
+                <li>更接近完整任务闭环</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="feature-grid">
+            <article class="glyph-card">
+              <p class="glyph-title">被动响应</p>
+              <h3>聊天 AI</h3>
+              <p>像你每次都得叫它一下，它才抬头看你。</p>
+            </article>
+            <article class="glyph-card accent">
+              <p class="glyph-title">目标驱动</p>
+              <h3>Agent</h3>
+              <p>你给它目标，它开始琢磨要分几步走。</p>
+            </article>
+            <article class="glyph-card">
+              <p class="glyph-title">封闭功能</p>
+              <h3>聊天 AI</h3>
+              <p>像一个坐在桌前很会讲道理的人。</p>
+            </article>
+            <article class="glyph-card accent">
+              <p class="glyph-title">Skill 扩展</p>
+              <h3>Agent</h3>
+              <p>像一个能不断学新技能、带新装备的执行系统。</p>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Why Now</p>
+            <h3>为什么 OpenClaw 一类工具会在这一轮突然变热？</h3>
+            <div class="insight-grid">
+              <article class="insight-card">
+                <h4>时机到了</h4>
+                <p>AI 发展刚好卡在一个临界点：大家已经厌倦“只会答”的工具，开始渴望“真的能干活”的系统。</p>
+              </article>
+              <article class="insight-card">
+                <h4>画面感变强了</h4>
+                <p>过去很多 Agent 讨论停留在概念里，这一轮大家第一次更直观地看到“目标输入后，系统真的去跑流程”。</p>
+              </article>
+              <article class="insight-card">
+                <h4>本地优先很抓人</h4>
+                <p>“文件不一定都要上传云端”“能在自己机器上跑”这件事，对隐私敏感和重度工作流用户都很有吸引力。</p>
+              </article>
+              <article class="insight-card">
+                <h4>社交传播太强</h4>
+                <p>一旦出现“像科幻起飞”的案例，传播速度会非常快。人们不一定先懂原理，但会先被场景震住。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Advantage Matrix</p>
+              <h3>OpenClaw 一类 Agent 的 4 个差异化优势</h3>
+              <div class="advantage-list">
+                <article>
+                  <h4>本地闭环</h4>
+                  <p>不是每一步都要把完整文件上传出去，很多动作可以在本地环境完成。</p>
+                </article>
+                <article>
+                  <h4>常驻待命</h4>
+                  <p>不像传统 AI 用完即走，它更像后台驻留的值班员，可以接定时和触发式任务。</p>
+                </article>
+                <article>
+                  <h4>Skill 扩展</h4>
+                  <p>能力不是固定死的，可以装技能包，像给系统追加新的模块和手艺。</p>
+                </article>
+                <article>
+                  <h4>跨平台接入</h4>
+                  <p>不必困在单一网页里，可以接入飞书、群聊、企业办公平台，嵌进原有工作流。</p>
+                </article>
+              </div>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Reality Check</p>
+              <h3>也别神化它：它不是万能数字分身</h3>
+              <ul class="check-list">
+                <li>它适合规则明确、步骤标准化的任务</li>
+                <li>它不适合需要连续决策、频繁变更目标的开放任务</li>
+                <li>它看起来像“全自动”，但背后仍然需要人定义边界</li>
+                <li>它不是终极形态，更像是从聊天 AI 走向执行系统的过渡阶段</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Core Structure</p>
+              <h3>一个 Agent 通常由什么组成？</h3>
+              <div class="node-list">
+                <button class="node-button is-active" data-node="brain">大脑</button>
+                <button class="node-button" data-node="hands">手脚</button>
+                <button class="node-button" data-node="memory">记忆</button>
+                <button class="node-button" data-node="channel">渠道</button>
+                <button class="node-button" data-node="access">钥匙</button>
+              </div>
+            </article>
+            <article class="panel inset node-display">
+              <div class="node-panel is-active" data-node-panel="brain">
+                <h3>大脑</h3>
+                <p>模型层，负责理解任务、推理路线、安排步骤。大脑再聪明，没有手脚也只能当军师。</p>
+              </div>
+              <div class="node-panel" data-node-panel="hands">
+                <h3>手脚</h3>
+                <p>工具层，负责读文件、开网页、执行动作。真正让 Agent 和普通聊天机器人拉开差距的，往往就是这双“手脚”。</p>
+              </div>
+              <div class="node-panel" data-node-panel="memory">
+                <h3>记忆</h3>
+                <p>像本地备忘录，帮助它保留上下文、偏好和历史重点，不至于每一轮都像失忆了一样重新开始。</p>
+              </div>
+              <div class="node-panel" data-node-panel="channel">
+                <h3>渠道</h3>
+                <p>决定你是通过网页、飞书、群聊还是别的平台叫它做事。门开在哪，决定你和它平时怎么见面。</p>
+              </div>
+              <div class="node-panel" data-node-panel="access">
+                <h3>钥匙</h3>
+                <p>权限决定它能进哪些房间。钥匙太少，它什么也做不了；钥匙太多，它可能一激动把锅端走。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Execution Chain</p>
+            <h3>Agent 的典型工作流程</h3>
+            <div class="timeline" data-step-group="workflow">
+              <button class="timeline-step is-active" data-step="1"><span>1</span><strong>接收目标</strong></button>
+              <button class="timeline-step" data-step="2"><span>2</span><strong>理解任务</strong></button>
+              <button class="timeline-step" data-step="3"><span>3</span><strong>拆分步骤</strong></button>
+              <button class="timeline-step" data-step="4"><span>4</span><strong>调用工具</strong></button>
+              <button class="timeline-step" data-step="5"><span>5</span><strong>观察结果</strong></button>
+              <button class="timeline-step" data-step="6"><span>6</span><strong>调整动作</strong></button>
+              <button class="timeline-step" data-step="7"><span>7</span><strong>返回结果</strong></button>
+            </div>
+            <div class="step-caption" id="workflow-caption">
+              先告诉它目标，而不是把每一步都替它念出来。
+            </div>
+          </div>
+
+          <blockquote class="quote-rune">
+            “我们不是在讨论谁更聪明，我们在讨论谁除了会说，还多长出了手和脚。”
+          </blockquote>
+
+          <div class="panel inset">
+            <p class="eyebrow">Judgement Trial</p>
+            <h3>哪些任务更适合交给 Agent？</h3>
+            <div class="flip-grid">
+              <button class="flip-card" data-flip>
+                <span class="flip-front">解释一个语法点</span>
+                <span class="flip-back">更像聊天 AI 任务：重点在解释，不在执行。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">归纳错题成因</span>
+                <span class="flip-back">适合 Agent 参与：可整理、可分类、可复查。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">定时提醒复习计划</span>
+                <span class="flip-back">适合 Agent：明确、重复、步骤标准。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">代写作文直接提交</span>
+                <span class="flip-back">不应外包：省下的是时间，丢掉的是成长和诚信。</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="lecture-2" class="panel lecture-panel reveal-section" data-section-name="lecture-2">
+          <div class="section-heading">
+            <p class="eyebrow">Lecture 02</p>
+            <h2>把 Agent 跑起来，理解部署与配置</h2>
+          </div>
+          <div class="lecture-meta">
+            <span>建议时长：120 分钟</span>
+            <span>目标：跑起来，也看懂为什么能跑</span>
+          </div>
+
+          <div class="path-grid">
+            <article class="path-card">
+              <span>Path A</span>
+              <h3>本地部署</h3>
+              <p>自由度高，隐私更强，但第一次上手像自己装修房子，爽是爽，就是容易先和水电打架。</p>
+            </article>
+            <article class="path-card highlighted">
+              <span>Path B</span>
+              <h3>平台托管</h3>
+              <p>更省心，适合课堂展示和快速体验，像拎包入住的精装公寓，但平台给你什么结构，你就得先顺着住。</p>
+            </article>
+            <article class="path-card">
+              <span>Path C</span>
+              <h3>一键部署</h3>
+              <p>最快上手，最适合第一口尝鲜，但别把“点一下就能跑”误会成“没有代价”。</p>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Platform Atlas</p>
+            <h3>现实里常见的 4 种落地形态</h3>
+            <div class="platform-grid">
+              <article class="platform-card">
+                <h4>原生 OpenClaw</h4>
+                <p>最能体现 Agent 原味：本地优先、系统权限、可深度定制，但也最考验配置耐心。</p>
+                <ul>
+                  <li>自由度高</li>
+                  <li>门槛高</li>
+                  <li>适合深度折腾</li>
+                </ul>
+              </article>
+              <article class="platform-card">
+                <h4>Kimi 托管型</h4>
+                <p>像平台给你开了一个云端沙箱，体验非常丝滑，适合先感受“Agent 跑起来”的感觉。</p>
+                <ul>
+                  <li>上手快</li>
+                  <li>适合演示</li>
+                  <li>受平台环境约束</li>
+                </ul>
+              </article>
+              <article class="platform-card">
+                <h4>扣子场景型</h4>
+                <p>更偏平台化产品和应用编排，适合快速接技能、接场景、接内容生产工作流。</p>
+                <ul>
+                  <li>对小白友好</li>
+                  <li>技能安装直观</li>
+                  <li>商业化约束更明显</li>
+                </ul>
+              </article>
+              <article class="platform-card">
+                <h4>飞书集成型</h4>
+                <p>最大的价值是融入已有办公流：消息、待办、文档、多维表格这些能力都能串起来。</p>
+                <ul>
+                  <li>工作流顺滑</li>
+                  <li>适合团队/课堂演示</li>
+                  <li>配置机器人和权限是关键</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Classroom Recommendation</p>
+            <h3>课堂主方案：轻门槛部署，重理解配置</h3>
+            <p>
+              课堂里最重要的不是“最硬核”，而是“能跑起来、能看懂、能讲明白”。所以推荐优先演示低门槛方案，
+              再补充原生 OpenClaw、Kimi、扣子、飞书等不同类型的现实位置。
+            </p>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Official Quickstart</p>
+            <h3>按官方文档，从零到第一个可用聊天的最短路径</h3>
+            <div class="official-steps">
+              <article>
+                <strong>Step 1</strong>
+                <p>先确认环境：官方入门页要求 Node 22 或更高版本。</p>
+              </article>
+              <article>
+                <strong>Step 2</strong>
+                <p>安装 OpenClaw，然后运行 `openclaw onboard --install-daemon` 或 `openclaw onboard` 完成向导。</p>
+              </article>
+              <article>
+                <strong>Step 3</strong>
+                <p>检查 Gateway 是否正常：`openclaw gateway status`。</p>
+              </article>
+              <article>
+                <strong>Step 4</strong>
+                <p>最快体验不是先配渠道，而是先开控制台：`openclaw dashboard`，直接在浏览器聊天。</p>
+              </article>
+            </div>
+            <p class="caption-note">这条线很适合课堂演示，因为它先把“能用”跑起来，再决定要不要接聊天渠道。</p>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Configuration Console</p>
+              <h3>配置项背后的意思</h3>
+              <div class="config-list">
+                <button class="config-button is-active" data-config="model">模型</button>
+                <button class="config-button" data-config="tool">工具</button>
+                <button class="config-button" data-config="skill">Skill</button>
+                <button class="config-button" data-config="permission">权限</button>
+                <button class="config-button" data-config="memory">记忆</button>
+                <button class="config-button" data-config="channel">渠道</button>
+              </div>
+            </article>
+            <article class="panel inset config-display">
+              <div class="config-panel is-active" data-config-panel="model">
+                <h3>模型</h3>
+                <p>决定它怎么思考，像给大脑装发动机。发动机不是越响越好，关键看适不适合当前任务。</p>
+              </div>
+              <div class="config-panel" data-config-panel="tool">
+                <h3>工具</h3>
+                <p>决定它能动哪些手脚。没有工具，它顶多是个会说话的军师。</p>
+              </div>
+              <div class="config-panel" data-config-panel="skill">
+                <h3>Skill</h3>
+                <p>像可插拔能力包。不是你每次手动点 App，而是装上之后，它在合适的时候可以自己调用。</p>
+              </div>
+              <div class="config-panel" data-config-panel="permission">
+                <h3>权限</h3>
+                <p>像钥匙串。钥匙太少，它站在门外叹气；钥匙太多，它可能热心过头。</p>
+              </div>
+              <div class="config-panel" data-config-panel="memory">
+                <h3>记忆</h3>
+                <p>帮助它维持上下文连续，不至于每一轮都像第一次见面。</p>
+              </div>
+              <div class="config-panel" data-config-panel="channel">
+                <h3>渠道</h3>
+                <p>决定你从哪里叫它：网页、飞书、群聊还是别的平台。门开在哪，工作流就延伸到哪。</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Model Setup</p>
+              <h3>模型怎么配，官方推荐怎么做？</h3>
+              <ul class="check-list">
+                <li>先通过 `openclaw onboard` 或 `openclaw configure` 完成 provider 认证</li>
+                <li>再用 `openclaw models status` 查看当前默认模型和认证状态</li>
+                <li>用 `openclaw models list` 看可用模型</li>
+                <li>用 `openclaw models set provider/model` 设置默认模型</li>
+                <li>如果要写到配置里，可以在 `agents.defaults.model.primary` 指定如 `anthropic/...` 或 `openai/...`</li>
+              </ul>
+              <p class="caption-note">官方文档强调的是“先选 provider，再设默认模型”，而不是一上来先改一堆配置文件。</p>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Model Strategy</p>
+              <h3>课堂里怎么讲“模型选择”才不空？</h3>
+              <div class="advantage-list compact">
+                <article>
+                  <h4>强模型</h4>
+                  <p>更适合复杂规划、长任务和高质量输出，但成本更高。</p>
+                </article>
+                <article>
+                  <h4>轻模型</h4>
+                  <p>更适合快速、便宜、日常型任务，但容易在复杂任务上掉链子。</p>
+                </article>
+                <article>
+                  <h4>课堂建议</h4>
+                  <p>演示时用稳定模型，避免现场把时间消耗在模型抽风和额度问题上。</p>
+                </article>
+                <article>
+                  <h4>思维提醒</h4>
+                  <p>模型决定“脑子”，但 Agent 的体验好不好，往往同样取决于工具、权限和渠道。</p>
+                </article>
+              </div>
+            </article>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Skill Lifecycle</p>
+              <h3>一个 Skill 从“听说过”到“真的可用”要经过什么？</h3>
+              <div class="advantage-list compact">
+                <article>
+                  <h4>发现</h4>
+                  <p>从 ClawHub、GitHub、课程资料、社区案例里找到合适能力。</p>
+                </article>
+                <article>
+                  <h4>安装</h4>
+                  <p>直接让 Agent 装，或者把技能包丢给它，让它自己接入。</p>
+                </article>
+                <article>
+                  <h4>配置</h4>
+                  <p>很多技能不只是“装完就行”，还需要补 API、Token、URL、权限。</p>
+                </article>
+                <article>
+                  <h4>编排</h4>
+                  <p>真正有价值的不是单技能，而是多个技能被任务编排成一个完整闭环。</p>
+                </article>
+              </div>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Channel Integration</p>
+              <h3>接入飞书这类平台时，真正要做的是什么？</h3>
+              <ul class="check-list">
+                <li>创建机器人或应用</li>
+                <li>开通消息、文件、资源等必要权限</li>
+                <li>配置事件接收或长连接</li>
+                <li>把 App ID / Secret 等关键参数交给 Agent 或平台配置页</li>
+                <li>完成配对后，再验证它能不能在真实聊天场景里闭环</li>
+              </ul>
+              <p class="caption-note">这也是为什么“能接入渠道”很重要，因为 Agent 真正强的地方往往不是网页里，而是融进你原本的工作流里。</p>
+            </article>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Feishu Official Path</p>
+              <h3>按官方文档接入飞书，主线其实很清楚</h3>
+              <ol class="ordered-list">
+                <li>先在飞书开放平台创建企业应用，拿到 App ID 和 App Secret。</li>
+                <li>然后运行 `openclaw channels add`，选择 Feishu 并填入凭证。</li>
+                <li>如果使用 WebSocket/长连接模式，不必暴露公网 webhook。</li>
+                <li>配置完成后，用 `openclaw gateway status`、`openclaw gateway restart`、`openclaw logs --follow` 检查状态。</li>
+                <li>如果要手动写配置，可以在 `~/.openclaw/openclaw.json` 里配置 `channels.feishu.accounts.main`。</li>
+              </ol>
+              <p class="caption-note">这一块很适合现场强调：渠道接入本质上是在给 Agent 装一张“嘴”和“一对耳朵”。</p>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">WeChat Path</p>
+              <h3>微信可以怎么接？要分清“官方主线”和“实战方案”</h3>
+              <ul class="check-list">
+                <li>我查到的 OpenClaw 官方文档主线里，飞书路径最清晰；微信并没有像飞书那样在当前官方站点里给出同级独立专页。</li>
+                <li>但你补充的教程给出了一个实战方案：通过腾讯的 `@tencent-weixin/openclaw-weixin` 插件接入个人微信。</li>
+                <li>核心动作是安装插件、启用插件、执行 `openclaw channels login --channel openclaw-weixin` 扫码登录，然后重启 gateway。</li>
+                <li>Windows 还提到一个现实坑：`npx` 可能报错，这时可以改用 `openclaw plugins install "@tencent-weixin/openclaw-weixin"` 这条线。</li>
+              </ul>
+              <p class="caption-note">所以课堂里最稳的讲法是：飞书讲官方路径，微信讲“社区/第三方插件实战路径”，不要把两者混成同一种官方支持等级。</p>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Feishu Demo Frames</p>
+            <h3>飞书接入演示图框架</h3>
+            <div class="demo-frames">
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 A</span>
+                  <strong>飞书开放平台创建应用</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 1：创建应用</h4>
+                  <p>这里后续放“飞书开放平台创建企业应用/机器人”的实际截图，建议能看到应用名称、能力入口和凭证页入口。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 B</span>
+                  <strong>填写 App ID / Secret</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 2：在 OpenClaw 中配置渠道</h4>
+                  <p>这里后续放 `openclaw channels add` 或配置页填写凭证的截图，重点让观众看懂“渠道配置”是在接一条消息通路。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 C</span>
+                  <strong>长连接 / 事件配置</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 3：配置事件接收</h4>
+                  <p>这里后续放飞书后台中的长连接、事件订阅或回调设置图，适合讲“为什么它能在飞书里真正收发消息”。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 D</span>
+                  <strong>飞书聊天窗口验证</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 4：在飞书里验证闭环</h4>
+                  <p>这里后续放机器人实际对话截图，最好能体现“发消息、收到响应、执行任务”三件事至少发生两件。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">WeChat Plugin Flow</p>
+            <h3>如果要讲个人微信接入，可以这样讲清流程</h3>
+            <div class="official-steps">
+              <article>
+                <strong>1. 装插件</strong>
+                <p>示例教程使用 `npx -y @tencent-weixin/openclaw-weixin-cli@latest install`，也可以直接用 `openclaw plugins install "@tencent-weixin/openclaw-weixin"`。</p>
+              </article>
+              <article>
+                <strong>2. 开权限</strong>
+                <p>必要时在 `~/.openclaw/openclaw.json` 的 `plugins.allow` 中加入 `openclaw-weixin`。</p>
+              </article>
+              <article>
+                <strong>3. 扫码登录</strong>
+                <p>执行 `openclaw channels login --channel openclaw-weixin`，用微信扫码绑定。</p>
+              </article>
+              <article>
+                <strong>4. 重启并验证</strong>
+                <p>执行 `openclaw gateway restart`，再去后台或聊天窗口验证微信通道是否真正可用。</p>
+              </article>
+            </div>
+            <p class="caption-note">这条线很适合课堂说明“渠道接入不等于功能魔法”，本质上还是插件、认证、登录和网关重启这些工程动作。</p>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">WeChat Demo Frames</p>
+            <h3>微信接入演示图框架</h3>
+            <div class="demo-frames">
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 A</span>
+                  <strong>插件安装命令</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 1：安装微信插件</h4>
+                  <p>这里后续放插件安装命令执行界面的截图，建议能看到 `openclaw plugins install` 或一键安装命令。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 B</span>
+                  <strong>二维码登录</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 2：扫码绑定</h4>
+                  <p>这里后续放终端二维码的截图，这会是最直观的一张图，观众一眼就能明白“渠道登录”在发生什么。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 C</span>
+                  <strong>Gateway 重启 / 渠道状态</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 3：重启并检查渠道</h4>
+                  <p>这里后续放 gateway 重启或后台渠道列表的截图，用来解释“装完不等于已经工作”。</p>
+                </div>
+              </article>
+              <article class="demo-frame">
+                <div class="demo-shot">
+                  <span>截图占位 D</span>
+                  <strong>微信聊天验证</strong>
+                </div>
+                <div class="demo-copy">
+                  <h4>步骤 4：在微信里验证</h4>
+                  <p>这里后续放微信聊天界面中的真实对话图，适合讲“插件接入之后，它真的变成了一个可对话的渠道”。</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Soul Files</p>
+              <h3>OpenClaw 的“灵魂”不只是一句人设，它是工作区启动文件</h3>
+              <ul class="check-list">
+                <li>官方 Agent Runtime 页面把 `SOUL.md` 视为启动时注入的重要文件之一</li>
+                <li>同一层还有 `AGENTS.md`、`TOOLS.md`、`IDENTITY.md`、`USER.md` 等文件</li>
+                <li>这些文件并不是花架子，它们会直接影响 agent 的风格、边界、语气和默认行为</li>
+                <li>如果工作区是它的“家”，那 `SOUL.md` 就像它的性格与底线说明书</li>
+              </ul>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Write Better SOUL</p>
+              <h3>怎么把 `SOUL.md` 写得真正有用？</h3>
+              <div class="advantage-list compact">
+                <article>
+                  <h4>写边界</h4>
+                  <p>什么能做，什么不能做，尤其是外部发送、隐私、公开发言这类高风险动作。</p>
+                </article>
+                <article>
+                  <h4>写语气</h4>
+                  <p>是简洁、温和、直接，还是更像助教、研究助理、运营搭子，要写清楚。</p>
+                </article>
+                <article>
+                  <h4>写偏好</h4>
+                  <p>遇到问题是先搜索、先读文件、先提问，还是先给结论，这些都会影响体验。</p>
+                </article>
+                <article>
+                  <h4>写禁忌</h4>
+                  <p>不要空洞地写“友好”“专业”，要写可执行的原则，比如“外发前先确认”。</p>
+                </article>
+              </div>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Agent Creation</p>
+            <h3>如何根据真实应用创建一个 Agent，而不是只堆一个空壳？</h3>
+            <div class="official-steps">
+              <article>
+                <strong>1. 先定任务</strong>
+                <p>先回答它服务什么场景，比如“学习助教”“资料整理员”“群聊答疑机器人”。</p>
+              </article>
+              <article>
+                <strong>2. 再定工作区</strong>
+                <p>给它独立 workspace，把它真正需要读写的资料、模板、记忆放进去。</p>
+              </article>
+              <article>
+                <strong>3. 再写灵魂</strong>
+                <p>用 `SOUL.md` 定语气和边界，用 `AGENTS.md` 定工作规则，用 `USER.md` 写服务对象偏好。</p>
+              </article>
+              <article>
+                <strong>4. 再配路由</strong>
+                <p>如果有多个 agent，用 `openclaw agents add` 和 bindings 把不同渠道、账号或人群路由到不同 agent。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">SOUL Example</p>
+            <h3>`SOUL.md` 示例卡片：什么样的灵魂文件才算有用？</h3>
+            <div class="case-tabs" data-tab-group="soul">
+              <button class="case-tab is-active" data-soul="good">好的示例</button>
+              <button class="case-tab" data-soul="bad">常见空话版</button>
+              <button class="case-tab" data-soul="coach">学习助教型</button>
+              <button class="case-tab" data-soul="organizer">资料整理型</button>
+            </div>
+            <div class="case-display" data-panel-group="soul">
+              <article class="case-panel is-active" data-soul-panel="good">
+                <h4>好的 `SOUL.md` 有 4 个特点</h4>
+                <ul>
+                  <li>先写身份：你是谁，服务谁，核心职责是什么</li>
+                  <li>再写边界：什么不能自动做，哪些动作必须先确认</li>
+                  <li>再写风格：回答要简洁还是详细，偏老师、助理还是同伴</li>
+                  <li>再写默认策略：遇到陌生任务先搜索、先读文件还是先提问</li>
+                </ul>
+                <pre class="code-card"><code>你是一个学习助教型 Agent。
+你的目标不是替用户完成学习任务，
+而是帮助用户拆解任务、整理资料、检查结构、提醒风险。
+
+禁止直接代写需提交的作业。
+涉及外发、删除、支付、账号授权前必须先确认。
+回答语气保持温和、清晰、直接。
+遇到信息不足时，先指出缺口，再建议下一步。</code></pre>
+              </article>
+              <article class="case-panel" data-soul-panel="bad">
+                <h4>没用的 `SOUL.md` 常常长这样</h4>
+                <pre class="code-card"><code>你是一个专业、友好、强大的 AI 助手，
+你无所不能，尽可能帮助用户完成任何任务。
+请保持高效、智能、准确。</code></pre>
+                <p class="caption-note">问题在于：这类写法几乎没有可执行边界。听起来像招聘海报，实际对行为约束帮助很小。</p>
+              </article>
+              <article class="case-panel" data-soul-panel="coach">
+                <h4>学习助教型 `SOUL.md` 示例</h4>
+                <pre class="code-card"><code>你是一个学习助教型 Agent，服务对象是需要提升阅读、
+写作、资料整理和复习效率的学习者。
+
+你优先帮助用户：
+1. 整理材料
+2. 提炼重点
+3. 给出结构化建议
+4. 提醒错误和风险
+
+你不直接代写要提交的作业，不替用户做价值判断，
+不把不确定的信息说成确定事实。
+
+你的风格像一个耐心但不啰嗦的助教：
+先给结论，再给理由，再给下一步建议。</code></pre>
+              </article>
+              <article class="case-panel" data-soul-panel="organizer">
+                <h4>资料整理型 `SOUL.md` 示例</h4>
+                <pre class="code-card"><code>你是一个资料整理型 Agent。
+你的核心职责是收集、归类、去重、提纲化和结构化输出。
+
+你默认优先做：
+- 分类
+- 建清单
+- 提炼关键词
+- 标出待确认项
+
+遇到来源不明、信息冲突、引用不全时，
+必须明确标记“需人工核查”，不能擅自补全。
+
+你的输出应该像一份可继续加工的工作底稿，
+而不是像最终定稿。</code></pre>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Create One Agent</p>
+            <h3>真实示例：为“英语学习助教”创建一个 Agent</h3>
+            <div class="agent-blueprint">
+              <article>
+                <h4>场景定义</h4>
+                <p>目标不是“什么都做”，而是专注于英语阅读、作文修改、词汇整理和复习提醒。</p>
+              </article>
+              <article>
+                <h4>工作区内容</h4>
+                <p>放入常用阅读材料、作文模板、错题样例、复习任务清单，以及 `SOUL.md / USER.md / AGENTS.md`。</p>
+              </article>
+              <article>
+                <h4>推荐技能</h4>
+                <p>文档整理、网页摘要、OCR、定时提醒、资料分类。不要一上来装十几个花里胡哨的技能。</p>
+              </article>
+              <article>
+                <h4>渠道选择</h4>
+                <p>如果是个人使用，先用 dashboard；如果是课堂或小组协作，再考虑飞书/群聊接入。</p>
+              </article>
+            </div>
+            <div class="agent-walkthrough">
+              <div>
+                <p class="eyebrow">Step A</p>
+                <h4>先定边界</h4>
+                <p>它可以整理和提醒，但不能代写作文、不能替用户提交作业。</p>
+              </div>
+              <div>
+                <p class="eyebrow">Step B</p>
+                <h4>再定语气</h4>
+                <p>像助教，不像营销号；像搭子，不像班主任。</p>
+              </div>
+              <div>
+                <p class="eyebrow">Step C</p>
+                <h4>再定默认动作</h4>
+                <p>收到材料时先提炼主旨和关键词；收到作文时先看结构再提建议。</p>
+              </div>
+              <div>
+                <p class="eyebrow">Step D</p>
+                <h4>最后再接渠道</h4>
+                <p>先保证本地或 dashboard 能用，再把它接进飞书或微信，不要一开始就多线开战。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Multi-Agent</p>
+            <h3>官方对“一个 agent”怎么定义？</h3>
+            <div class="insight-grid three-up">
+              <article class="insight-card">
+                <h4>一个工作区</h4>
+                <p>文件、人格、说明书、技能、记忆，都会围绕这个 workspace 组织。</p>
+              </article>
+              <article class="insight-card">
+                <h4>一个 agentDir</h4>
+                <p>每个 agent 有自己独立的认证、模型注册和状态目录，别混用。</p>
+              </article>
+              <article class="insight-card">
+                <h4>一个会话世界</h4>
+                <p>多 agent 的真正价值是隔离：不同人格、不同账号、不同路由、不同上下文不串味。</p>
+              </article>
+            </div>
+            <p class="caption-note">官方文档里甚至直接给了 `openclaw agents add work`、`openclaw agents list --bindings` 这类命令，说明多 agent 不是花活，而是系统一级能力。</p>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Deployment Steps</p>
+            <h3>第一次运行时，重点观察什么</h3>
+            <div class="step-list" data-step-group="deployment">
+              <button class="step-card is-active" data-step="1"><strong>Step 1</strong><p>它有没有真的开始执行，而不只是礼貌回复。</p></button>
+              <button class="step-card" data-step="2"><strong>Step 2</strong><p>它调用了哪些工具或能力。</p></button>
+              <button class="step-card" data-step="3"><strong>Step 3</strong><p>它是否在当前平台里完成了一个小闭环。</p></button>
+              <button class="step-card" data-step="4"><strong>Step 4</strong><p>它出错时更像是卡在模型、权限、工具还是渠道上。</p></button>
+            </div>
+            <div class="step-caption" id="deployment-caption">
+              第一眼先看它有没有真的“动起来”，别先被礼貌回复骗了。
+            </div>
+          </div>
+
+          <blockquote class="quote-rune">
+            “配置不是装饰品。你每点开一个开关，其实都在定义它的能力边界和风险边界。”
+          </blockquote>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Troubleshooting</p>
+              <h3>常见翻车位</h3>
+              <ul class="check-list">
+                <li>部署成功了，但不会响应</li>
+                <li>能聊天，但不会执行动作</li>
+                <li>Skill 装了，但不会正确调用</li>
+                <li>上下文越来越乱</li>
+                <li>平台额度、会员、模型权限没跟上</li>
+              </ul>
+            </article>
+            <article class="panel inset danger-panel">
+              <p class="eyebrow">Boundary Warning</p>
+              <h3>能执行，不代表永远执行得对</h3>
+              <ul class="check-list">
+                <li>不要轻易给高权限</li>
+                <li>不要在重要环境里乱试</li>
+                <li>不要把模糊目标直接丢给强执行 Agent</li>
+                <li>不要忘了会员、额度、平台限制也属于现实边界</li>
+                <li>不要把“一键部署”理解成“没有学习成本”</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="lecture-3" class="panel lecture-panel reveal-section" data-section-name="lecture-3">
+          <div class="section-heading">
+            <p class="eyebrow">Lecture 03</p>
+            <h2>让 Agent 帮助学习，顺便学会选工具</h2>
+          </div>
+          <div class="lecture-meta">
+            <span>建议时长：120 分钟</span>
+            <span>目标：学会用，也学会停</span>
+          </div>
+
+          <div class="scenario-grid">
+            <article class="scenario-card">
+              <h3>英语阅读</h3>
+              <p>适合：主旨提炼、词汇表、复习问题。<br />不适合：把理解过程整包外包。</p>
+            </article>
+            <article class="scenario-card">
+              <h3>作文修改</h3>
+              <p>适合：结构检查、逻辑提醒、语法建议。<br />不适合：整篇代写直接提交。</p>
+            </article>
+            <article class="scenario-card">
+              <h3>错题归类</h3>
+              <p>适合：按错误原因分类、找规律。<br />不适合：把“为什么错”也一并不思考。</p>
+            </article>
+            <article class="scenario-card">
+              <h3>资料整理</h3>
+              <p>适合：收集、去重、分层次。<br />不适合：把可信度判断彻底交出去。</p>
+            </article>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Case Archive</p>
+            <h3>真实案例库：Agent 到底能把哪些事串成工作流？</h3>
+            <div class="case-tabs" data-tab-group="cases">
+              <button class="case-tab is-active" data-case="monitoring">监控与提醒</button>
+              <button class="case-tab" data-case="brain">第二大脑</button>
+              <button class="case-tab" data-case="invoice">发票自动化</button>
+              <button class="case-tab" data-case="content">内容流水线</button>
+              <button class="case-tab" data-case="knowledge">知识管理</button>
+            </div>
+            <div class="case-display" data-panel-group="cases">
+              <article class="case-panel is-active" data-case-panel="monitoring">
+                <h4>案例 1：监控网页变化并主动提醒</h4>
+                <p>文档里提到过一个很适合讲清 Agent 味道的例子：不是只让 AI 回答“最新动态是什么”，而是让它定期去看、去截图、去比较、去提醒。</p>
+                <ul>
+                  <li>适合讲“常驻待命”和“触发式任务”</li>
+                  <li>适合说明为什么浏览器能力和截图分析有价值</li>
+                  <li>也适合提醒：这类任务明确、重复、可检查，所以很适合 Agent</li>
+                </ul>
+              </article>
+              <article class="case-panel" data-case-panel="brain">
+                <h4>案例 2：把 OpenClaw 当成第二大脑入口</h4>
+                <p>不是让它替你思考，而是让它记住你的笔记、想法、任务和线索，需要时帮你回收、整理、再展示。</p>
+                <ul>
+                  <li>适合讲“记忆”和“上下文”的价值</li>
+                  <li>适合展示为什么 Agent 比普通聊天框更像长期协作对象</li>
+                  <li>也适合提醒：保存了很多，不等于理解了很多</li>
+                </ul>
+              </article>
+              <article class="case-panel" data-case-panel="invoice">
+                <h4>案例 3：发票 OCR + 飞书多维表格</h4>
+                <p>这是一个非常适合解释“Skill 即插即用”和“任务编排”的案例：上传发票，OCR 解析，写入表格，形成自动化闭环。</p>
+                <ul>
+                  <li>适合讲 Skill、API、平台集成三者如何组合</li>
+                  <li>适合说明 Agent 的价值不是单点能力，而是串联流程</li>
+                  <li>也适合提醒：现实里仍然需要授权、字段校对和规则修正</li>
+                </ul>
+              </article>
+              <article class="case-panel" data-case-panel="content">
+                <h4>案例 4：内容生产流水线</h4>
+                <p>比如下载视频、提取信息、生成摘要、产出图文草稿、存到平台文档，这种“多个环节连续执行”的工作特别有 Agent 味。</p>
+                <ul>
+                  <li>适合讲“为什么它看起来像在干活”</li>
+                  <li>适合说明平台型方案为什么对小白更有吸引力</li>
+                  <li>也适合强调：越自动，越要注意版权、真实性和审校</li>
+                </ul>
+              </article>
+              <article class="case-panel" data-case-panel="knowledge">
+                <h4>案例 5：知识管理和资料沉淀</h4>
+                <p>把资料分类、打标签、转成结构化内容，甚至接入知识库，这类任务很适合 Agent 先帮你打底。</p>
+                <ul>
+                  <li>适合讲学习场景与工作场景是相通的</li>
+                  <li>适合连接英语学习、错题整理、资料库建设</li>
+                  <li>也适合提醒：知识库丰富，不代表人就自动长知识</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <div class="panel inset">
+            <p class="eyebrow">Use It Right</p>
+            <h3>Agent 最适合帮忙的是哪一层？</h3>
+            <div class="learning-stack">
+              <article>
+                <span>Layer 1</span>
+                <h4>收集整理</h4>
+                <p>最适合交给 Agent，省重复劳动。</p>
+              </article>
+              <article>
+                <span>Layer 1.5</span>
+                <h4>辅助检查</h4>
+                <p>可以让它提建议，但别让它代替判断。</p>
+              </article>
+              <article>
+                <span>Layer 2-3</span>
+                <h4>理解与表达</h4>
+                <p>这部分不能外包，否则桌子干净了，脑子却没长东西。</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Tool Types</p>
+              <h3>不要先背产品名，先学会分类</h3>
+              <div class="tool-types">
+                <article>
+                  <h4>原生开源型</h4>
+                  <p>自由度高、可定制、门槛高。</p>
+                </article>
+                <article>
+                  <h4>平台托管型</h4>
+                  <p>上手快、部署省心、限制更多。</p>
+                </article>
+                <article>
+                  <h4>场景集成型</h4>
+                  <p>直接嵌入平台，工作流顺，但边界由平台决定。</p>
+                </article>
+              </div>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Selection Matrix</p>
+              <h3>选工具像选交通工具</h3>
+              <div class="matrix-table" data-matrix>
+                <div class="matrix-head">维度</div>
+                <div class="matrix-head">开源型</div>
+                <div class="matrix-head">托管型</div>
+                <div class="matrix-head">集成型</div>
+                <div class="matrix-row-label" data-row-label="threshold">门槛</div><div data-row="threshold">高</div><div data-row="threshold">中</div><div data-row="threshold">低</div>
+                <div class="matrix-row-label" data-row-label="freedom">自由度</div><div data-row="freedom">高</div><div data-row="freedom">中</div><div data-row="freedom">中低</div>
+                <div class="matrix-row-label" data-row-label="privacy">隐私可控</div><div data-row="privacy">高</div><div data-row="privacy">中</div><div data-row="privacy">中低</div>
+                <div class="matrix-row-label" data-row-label="integration">集成能力</div><div data-row="integration">中</div><div data-row="integration">中</div><div data-row="integration">高</div>
+              </div>
+              <div class="matrix-legend">
+                <button class="matrix-filter is-active" data-row-filter="all">全部维度</button>
+                <button class="matrix-filter" data-row-filter="threshold">门槛</button>
+                <button class="matrix-filter" data-row-filter="freedom">自由度</button>
+                <button class="matrix-filter" data-row-filter="privacy">隐私</button>
+                <button class="matrix-filter" data-row-filter="integration">集成</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="module-grid two-columns">
+            <article class="panel inset">
+              <p class="eyebrow">Good Tasks</p>
+              <h3>更适合 Agent 的任务画像</h3>
+              <ul class="check-list">
+                <li>步骤明确</li>
+                <li>可以机械执行</li>
+                <li>结果可回看、可检查</li>
+                <li>重复率高，手工做很烦</li>
+                <li>适合被技能或工具串起来形成闭环</li>
+              </ul>
+            </article>
+            <article class="panel inset">
+              <p class="eyebrow">Bad Tasks</p>
+              <h3>不该盲目交给 Agent 的任务画像</h3>
+              <ul class="check-list">
+                <li>需要连续价值判断</li>
+                <li>目标在过程中频繁变化</li>
+                <li>高风险、不可逆</li>
+                <li>本质是训练你的理解、判断、表达能力</li>
+                <li>结果一旦错了，代价非常高</li>
+              </ul>
+            </article>
+          </div>
+
+          <blockquote class="quote-rune">
+            “工具的上限决定它能帮你走多快，你的判断力决定它会不会把你带偏。”
+          </blockquote>
+
+          <div class="panel inset">
+            <p class="eyebrow">Boundary Check</p>
+            <h3>课堂判断题</h3>
+            <div class="flip-grid">
+              <button class="flip-card" data-flip>
+                <span class="flip-front">用 Agent 整理阅读材料</span>
+                <span class="flip-back">合理。重点是提效，不是替你理解。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">用 Agent 给作文提修改建议</span>
+                <span class="flip-back">合理。前提是建议由你判断，文字由你负责。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">用 Agent 直接代写并提交</span>
+                <span class="flip-back">不合理。效率赢了，成长和诚信输了。</span>
+              </button>
+              <button class="flip-card" data-flip>
+                <span class="flip-front">用 Agent 汇总错题类型</span>
+                <span class="flip-back">合理。前提是你还要自己复盘为什么错。</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="closing" class="panel closing-panel reveal-section" data-section-name="closing">
+          <div class="section-heading">
+            <p class="eyebrow">Final Shrine</p>
+            <h2>这门课希望带走的 5 个判断</h2>
+          </div>
+          <div class="closing-list">
+            <article><span>01</span><p>Agent 不只是聊天 AI 的升级版，它代表的是从回答问题到执行任务的变化。</p></article>
+            <article><span>02</span><p>OpenClaw 一类工具之所以吸引人，不只是因为新，而是因为它更像真正的数字助理。</p></article>
+            <article><span>03</span><p>便利、成本、隐私和风险，永远要一起看，不能只看“它看起来好厉害”。</p></article>
+            <article><span>04</span><p>真正重要的不是记住多少工具名字，而是学会判断哪一类工具适合你的目标。</p></article>
+            <article><span>05</span><p>AI 最好的位置不是替你学习，而是把那些机械、重复、可拆解的活先接过去。</p></article>
+          </div>
+          <div class="hero-actions">
+            <a class="button primary" href="#overview">回到地图</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
