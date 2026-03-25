@@ -420,23 +420,76 @@
           <div class="panel inset">
             <p class="eyebrow">Official Quickstart</p>
             <h3>按官方文档，从零到第一个可用聊天的最短路径</h3>
-            <div class="official-steps">
-              <article>
-                <strong>Step 1</strong>
-                <p>先确认环境：官方入门页要求 Node 22 或更高版本。</p>
-              </article>
-              <article>
-                <strong>Step 2</strong>
-                <p>安装 OpenClaw，然后运行 `openclaw onboard --install-daemon` 或 `openclaw onboard` 完成向导。</p>
-              </article>
-              <article>
-                <strong>Step 3</strong>
-                <p>检查 Gateway 是否正常：`openclaw gateway status`。</p>
-              </article>
-              <article>
-                <strong>Step 4</strong>
-                <p>最快体验不是先配渠道，而是先开控制台：`openclaw dashboard`，直接在浏览器聊天。</p>
-              </article>
+            <div class="quickstart-shell">
+              <div class="quickstart-header">
+                <p class="quickstart-lead">
+                  课堂里最建议照着官方 Getting Started 走一遍。先跑通最短路径，再决定要不要加飞书、微信或多 Agent。
+                </p>
+                <a
+                  class="button ghost quickstart-link"
+                  href="https://docs.openclaw.ai/start/getting-started"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  查看官方 Getting Started
+                </a>
+              </div>
+
+              <div class="install-visual" aria-label="OpenClaw 官方安装流程课堂示意">
+                <div class="install-visual-header">
+                  <div>
+                    <p class="eyebrow">Official Install Flow</p>
+                    <h4>Install OpenClaw</h4>
+                  </div>
+                </div>
+
+                <div class="install-os-tabs" aria-label="安装系统选项">
+                  <span class="install-os-tab is-active">macOS / Linux</span>
+                  <span class="install-os-tab">Windows (PowerShell)</span>
+                </div>
+
+                <div class="install-command-grid">
+                  <article class="install-command-mini">
+                    <p class="install-command-label">macOS / Linux</p>
+                    <pre class="command-block"><code>curl -fsSL https://openclaw.ai/install.sh | bash</code></pre>
+                  </article>
+                  <article class="install-command-mini">
+                    <p class="install-command-label">Windows PowerShell</p>
+                    <pre class="command-block"><code>iwr -useb https://openclaw.ai/install.ps1 | iex</code></pre>
+                  </article>
+                </div>
+              </div>
+
+              <div class="official-steps official-steps-five">
+                <article>
+                  <strong>Step 1</strong>
+                  <h4>确认环境</h4>
+                  <p>先确认环境。官方安装页当前推荐 Node 24，也兼容 Node 22 LTS。</p>
+                </article>
+                <article>
+                  <strong>Step 2</strong>
+                  <h4>执行安装脚本</h4>
+                  <p>执行官方安装脚本，按当前系统选择对应命令完成 CLI 安装。</p>
+                </article>
+                <article>
+                  <strong>Step 3</strong>
+                  <h4>运行向导</h4>
+                  <p>运行 onboarding，让向导帮你配置认证、Gateway 和基础选项。</p>
+                  <pre class="step-code"><code>openclaw onboard --install-daemon</code></pre>
+                </article>
+                <article>
+                  <strong>Step 4</strong>
+                  <h4>检查网关</h4>
+                  <p>确认 Gateway 已经起来，别只看安装成功提示。</p>
+                  <pre class="step-code"><code>openclaw gateway status</code></pre>
+                </article>
+                <article>
+                  <strong>Step 5</strong>
+                  <h4>打开控制台</h4>
+                  <p>先在本地聊天，再考虑接渠道。</p>
+                  <pre class="step-code"><code>openclaw dashboard</code></pre>
+                </article>
+              </div>
             </div>
             <p class="caption-note">这条线很适合课堂演示，因为它先把“能用”跑起来，再决定要不要接聊天渠道。</p>
           </div>
@@ -482,61 +535,84 @@
             </article>
           </div>
 
-          <div class="module-grid two-columns">
-            <article class="panel inset">
-              <p class="eyebrow">Model Setup</p>
-              <h3>模型怎么配，官方推荐怎么做？</h3>
-              <ul class="check-list">
-                <li>先通过 `openclaw onboard` 或 `openclaw configure` 完成 provider 认证</li>
-                <li>再用 `openclaw models status` 查看当前默认模型和认证状态</li>
-                <li>用 `openclaw models list` 看可用模型</li>
-                <li>用 `openclaw models set provider/model` 设置默认模型</li>
-                <li>如果要写到配置里，可以在 `agents.defaults.model.primary` 指定如 `anthropic/...` 或 `openai/...`</li>
-              </ul>
-              <p class="caption-note">官方文档强调的是“先选 provider，再设默认模型”，而不是一上来先改一堆配置文件。</p>
-            </article>
-            <article class="panel inset">
-              <p class="eyebrow">Model Strategy</p>
-              <h3>课堂里怎么讲“模型选择”才不空？</h3>
-              <div class="advantage-list compact">
-                <article>
-                  <h4>强模型</h4>
-                  <p>更适合复杂规划、长任务和高质量输出，但成本更高。</p>
-                </article>
-                <article>
-                  <h4>轻模型</h4>
-                  <p>更适合快速、便宜、日常型任务，但容易在复杂任务上掉链子。</p>
-                </article>
-                <article>
-                  <h4>课堂建议</h4>
-                  <p>演示时用稳定模型，避免现场把时间消耗在模型抽风和额度问题上。</p>
-                </article>
-                <article>
-                  <h4>思维提醒</h4>
-                  <p>模型决定“脑子”，但 Agent 的体验好不好，往往同样取决于工具、权限和渠道。</p>
-                </article>
-              </div>
-            </article>
-          </div>
+          <article class="panel inset">
+            <p class="eyebrow">Model Setup</p>
+            <h3>模型怎么配，官方推荐怎么做？</h3>
+            <div class="model-setup-steps">
+              <article>
+                <strong>Step 1</strong>
+                <h4>先完成认证</h4>
+                <p>先通过 onboarding 或 configure 把 provider 认证跑通，别一开始就手改配置文件。</p>
+                <pre class="step-code"><code>openclaw onboard
+openclaw configure</code></pre>
+              </article>
+              <article>
+                <strong>Step 2</strong>
+                <h4>查看当前状态</h4>
+                <p>先确认默认模型和 provider 状态，再决定后面怎么切。</p>
+                <pre class="step-code"><code>openclaw models status</code></pre>
+              </article>
+              <article>
+                <strong>Step 3</strong>
+                <h4>看可用模型</h4>
+                <p>列出当前可用模型，避免记忆里有、环境里没有。</p>
+                <pre class="step-code"><code>openclaw models list</code></pre>
+              </article>
+              <article>
+                <strong>Step 4</strong>
+                <h4>设置默认模型</h4>
+                <p>先用命令设置默认模型；如果确实需要落到配置里，再写 `agents.defaults.model.primary`。</p>
+                <pre class="step-code"><code>openclaw models set provider/model</code></pre>
+              </article>
+            </div>
+            <p class="caption-note">官方文档强调的是“先选 provider，再设默认模型”，而不是一上来先改一堆配置文件。</p>
+          </article>
+
+          <article class="panel inset">
+            <p class="eyebrow">Model Strategy</p>
+            <h3>课堂里怎么讲“模型选择”才不空？</h3>
+            <div class="advantage-list compact">
+              <article>
+                <h4>强模型</h4>
+                <p>更适合复杂规划、长任务和高质量输出，但成本更高。</p>
+              </article>
+              <article>
+                <h4>轻模型</h4>
+                <p>更适合快速、便宜、日常型任务，但容易在复杂任务上掉链子。</p>
+              </article>
+              <article>
+                <h4>课堂建议</h4>
+                <p>演示时用稳定模型，避免现场把时间消耗在模型抽风和额度问题上。</p>
+              </article>
+              <article>
+                <h4>思维提醒</h4>
+                <p>模型决定“脑子”，但 Agent 的体验好不好，往往同样取决于工具、权限和渠道。</p>
+              </article>
+            </div>
+          </article>
 
           <div class="module-grid two-columns">
             <article class="panel inset">
               <p class="eyebrow">Skill Lifecycle</p>
               <h3>一个 Skill 从“听说过”到“真的可用”要经过什么？</h3>
-              <div class="advantage-list compact">
+              <div class="skill-lifecycle-steps">
                 <article>
+                  <strong>Step 1</strong>
                   <h4>发现</h4>
                   <p>从 ClawHub、GitHub、课程资料、社区案例里找到合适能力。</p>
                 </article>
                 <article>
+                  <strong>Step 2</strong>
                   <h4>安装</h4>
                   <p>直接让 Agent 装，或者把技能包丢给它，让它自己接入。</p>
                 </article>
                 <article>
+                  <strong>Step 3</strong>
                   <h4>配置</h4>
                   <p>很多技能不只是“装完就行”，还需要补 API、Token、URL、权限。</p>
                 </article>
                 <article>
+                  <strong>Step 4</strong>
                   <h4>编排</h4>
                   <p>真正有价值的不是单技能，而是多个技能被任务编排成一个完整闭环。</p>
                 </article>
@@ -545,13 +621,33 @@
             <article class="panel inset">
               <p class="eyebrow">Channel Integration</p>
               <h3>接入飞书这类平台时，真正要做的是什么？</h3>
-              <ul class="check-list">
-                <li>创建机器人或应用</li>
-                <li>开通消息、文件、资源等必要权限</li>
-                <li>配置事件接收或长连接</li>
-                <li>把 App ID / Secret 等关键参数交给 Agent 或平台配置页</li>
-                <li>完成配对后，再验证它能不能在真实聊天场景里闭环</li>
-              </ul>
+              <div class="channel-integration-steps">
+                <article>
+                  <strong>Step 1</strong>
+                  <h4>创建入口</h4>
+                  <p>先创建机器人或应用，明确这个渠道里的身份入口。</p>
+                </article>
+                <article>
+                  <strong>Step 2</strong>
+                  <h4>开通权限</h4>
+                  <p>把消息、文件、资源等必要权限一次性理顺。</p>
+                </article>
+                <article>
+                  <strong>Step 3</strong>
+                  <h4>接上事件</h4>
+                  <p>配置事件接收、长连接或回调，让它真的能收发消息。</p>
+                </article>
+                <article>
+                  <strong>Step 4</strong>
+                  <h4>填写凭证</h4>
+                  <p>把 App ID、Secret 等关键参数交给 Agent 或平台配置页。</p>
+                </article>
+                <article>
+                  <strong>Step 5</strong>
+                  <h4>验证闭环</h4>
+                  <p>完成配对后，再回到真实聊天窗口验证它能不能闭环。</p>
+                </article>
+              </div>
               <p class="caption-note">这也是为什么“能接入渠道”很重要，因为 Agent 真正强的地方往往不是网页里，而是融进你原本的工作流里。</p>
             </article>
           </div>
@@ -560,24 +656,72 @@
             <article class="panel inset">
               <p class="eyebrow">Feishu Official Path</p>
               <h3>按官方文档接入飞书，主线其实很清楚</h3>
-              <ol class="ordered-list">
-                <li>先在飞书开放平台创建企业应用，拿到 App ID 和 App Secret。</li>
-                <li>然后运行 `openclaw channels add`，选择 Feishu 并填入凭证。</li>
-                <li>如果使用 WebSocket/长连接模式，不必暴露公网 webhook。</li>
-                <li>配置完成后，用 `openclaw gateway status`、`openclaw gateway restart`、`openclaw logs --follow` 检查状态。</li>
-                <li>如果要手动写配置，可以在 `~/.openclaw/openclaw.json` 里配置 `channels.feishu.accounts.main`。</li>
-              </ol>
+              <div class="path-steps">
+                <article>
+                  <strong>Step 1</strong>
+                  <h4>创建应用</h4>
+                  <p>先在飞书开放平台创建企业应用，拿到 App ID 和 App Secret。</p>
+                </article>
+                <article>
+                  <strong>Step 2</strong>
+                  <h4>添加渠道</h4>
+                  <p>运行渠道添加命令，选择 Feishu 并填入凭证。</p>
+                  <pre class="step-code"><code>openclaw channels add</code></pre>
+                </article>
+                <article>
+                  <strong>Step 3</strong>
+                  <h4>选择连接方式</h4>
+                  <p>如果使用 WebSocket / 长连接模式，不必暴露公网 webhook。</p>
+                </article>
+                <article>
+                  <strong>Step 4</strong>
+                  <h4>检查网关状态</h4>
+                  <p>配置完成后先查状态、再重启、再看日志，别只盯着配置页。</p>
+                  <pre class="step-code"><code>openclaw gateway status
+openclaw gateway restart
+openclaw logs --follow</code></pre>
+                </article>
+                <article>
+                  <strong>Step 5</strong>
+                  <h4>必要时手写配置</h4>
+                  <p>如果要手动写配置，可以在 `~/.openclaw/openclaw.json` 里配置 `channels.feishu.accounts.main`。</p>
+                </article>
+              </div>
               <p class="caption-note">这一块很适合现场强调：渠道接入本质上是在给 Agent 装一张“嘴”和“一对耳朵”。</p>
             </article>
             <article class="panel inset">
               <p class="eyebrow">WeChat Path</p>
               <h3>微信可以怎么接？要分清“官方主线”和“实战方案”</h3>
-              <ul class="check-list">
-                <li>我查到的 OpenClaw 官方文档主线里，飞书路径最清晰；微信并没有像飞书那样在当前官方站点里给出同级独立专页。</li>
-                <li>但你补充的教程给出了一个实战方案：通过腾讯的 `@tencent-weixin/openclaw-weixin` 插件接入个人微信。</li>
-                <li>核心动作是安装插件、启用插件、执行 `openclaw channels login --channel openclaw-weixin` 扫码登录，然后重启 gateway。</li>
-                <li>Windows 还提到一个现实坑：`npx` 可能报错，这时可以改用 `openclaw plugins install "@tencent-weixin/openclaw-weixin"` 这条线。</li>
-              </ul>
+              <div class="path-steps">
+                <article>
+                  <strong>Step 1</strong>
+                  <h4>先讲支持等级</h4>
+                  <p>官方文档主线里飞书路径更清晰；微信更适合按“社区 / 第三方插件实战”来讲。</p>
+                </article>
+                <article>
+                  <strong>Step 2</strong>
+                  <h4>安装插件</h4>
+                  <p>通过腾讯的 `@tencent-weixin/openclaw-weixin` 插件接入个人微信。</p>
+                  <pre class="step-code"><code>openclaw plugins install "@tencent-weixin/openclaw-weixin"</code></pre>
+                </article>
+                <article>
+                  <strong>Step 3</strong>
+                  <h4>扫码登录</h4>
+                  <p>安装后执行登录命令，用微信扫码完成绑定。</p>
+                  <pre class="step-code"><code>openclaw channels login --channel openclaw-weixin</code></pre>
+                </article>
+                <article>
+                  <strong>Step 4</strong>
+                  <h4>重启并验证</h4>
+                  <p>完成登录后重启 gateway，再去后台或聊天窗口验证渠道是否可用。</p>
+                  <pre class="step-code"><code>openclaw gateway restart</code></pre>
+                </article>
+                <article>
+                  <strong>注意</strong>
+                  <h4>Windows 兼容坑</h4>
+                  <p>`npx` 可能报错，所以课堂里更稳的讲法是优先展示 `openclaw plugins install` 这条线。</p>
+                </article>
+              </div>
               <p class="caption-note">所以课堂里最稳的讲法是：飞书讲官方路径，微信讲“社区/第三方插件实战路径”，不要把两者混成同一种官方支持等级。</p>
             </article>
           </div>
@@ -588,8 +732,16 @@
             <div class="demo-frames">
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 A</span>
-                  <strong>飞书开放平台创建应用</strong>
+                  <img
+                    src="./assets/screenshots/feishu/feishu-01-create-app.png"
+                    alt="飞书开放平台创建应用截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 A</span>
+                    <strong>飞书开放平台创建应用</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 1：创建应用</h4>
@@ -598,8 +750,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 B</span>
-                  <strong>填写 App ID / Secret</strong>
+                  <img
+                    src="./assets/screenshots/feishu/feishu-02-fill-credentials.png"
+                    alt="在 OpenClaw 中填写飞书 App ID 和 Secret 的截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 B</span>
+                    <strong>填写 App ID / Secret</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 2：在 OpenClaw 中配置渠道</h4>
@@ -608,8 +768,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 C</span>
-                  <strong>长连接 / 事件配置</strong>
+                  <img
+                    src="./assets/screenshots/feishu/feishu-03-event-config.png"
+                    alt="飞书长连接或事件配置截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 C</span>
+                    <strong>长连接 / 事件配置</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 3：配置事件接收</h4>
@@ -618,8 +786,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 D</span>
-                  <strong>飞书聊天窗口验证</strong>
+                  <img
+                    src="./assets/screenshots/feishu/feishu-04-chat-verify.png"
+                    alt="飞书聊天窗口验证截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 D</span>
+                    <strong>飞书聊天窗口验证</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 4：在飞书里验证闭环</h4>
@@ -659,8 +835,16 @@
             <div class="demo-frames">
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 A</span>
-                  <strong>插件安装命令</strong>
+                  <img
+                    src="./assets/screenshots/wechat/wechat-01-install-plugin.png"
+                    alt="安装微信插件命令截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 A</span>
+                    <strong>插件安装命令</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 1：安装微信插件</h4>
@@ -669,8 +853,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 B</span>
-                  <strong>二维码登录</strong>
+                  <img
+                    src="./assets/screenshots/wechat/wechat-02-login-qr.png"
+                    alt="微信扫码绑定二维码截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 B</span>
+                    <strong>二维码登录</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 2：扫码绑定</h4>
@@ -679,8 +871,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 C</span>
-                  <strong>Gateway 重启 / 渠道状态</strong>
+                  <img
+                    src="./assets/screenshots/wechat/wechat-03-gateway-status.png"
+                    alt="Gateway 重启或渠道状态截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 C</span>
+                    <strong>Gateway 重启 / 渠道状态</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 3：重启并检查渠道</h4>
@@ -689,8 +889,16 @@
               </article>
               <article class="demo-frame">
                 <div class="demo-shot">
-                  <span>截图占位 D</span>
-                  <strong>微信聊天验证</strong>
+                  <img
+                    src="./assets/screenshots/wechat/wechat-04-chat-verify.png"
+                    alt="微信聊天验证截图"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="demo-shot-fallback">
+                    <span>截图占位 D</span>
+                    <strong>微信聊天验证</strong>
+                  </div>
                 </div>
                 <div class="demo-copy">
                   <h4>步骤 4：在微信里验证</h4>
